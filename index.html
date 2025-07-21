@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cartesian JSON</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      height: 100%;
+      margin: 0;
+      font-size: 16px;
+      font-family: sans-serif;
+      color-scheme: light dark;
+    }
+
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    body>section {
+      min-width: 0;
+      min-height: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      display: grid;
+      grid-template-rows: auto auto 1fr;
+      gap: 16px;
+    }
+
+    body>section:nth-child(2) {
+      border-left: 1px solid rgba(128, 128, 128, 0.4);
+      border-right: 1px solid rgba(128, 128, 128, 0.4);
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      margin: 0;
+    }
+
+    textarea {
+      height: 100%;
+      width: 100%;
+      resize: none;
+      padding: 0.5rem;
+    }
+
+    section {
+      padding: 1rem;
+    }
+
+    p {
+      font-size: 0.875rem;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    input {
+      width: 100%;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    table,
+    th,
+    td {
+      border: 1px solid rgba(128, 128, 128, 0.4);
+    }
+
+    th,
+    td {
+      padding: 0.25rem;
+      text-align: center;
+      font-family: monospace;
+    }
+
+    th:first-child,
+    td:first-child {
+      width: 4rem;
+    }
+
+
+    input[type=checkbox] {
+      width: auto;
+    }
+
+    #json-output textarea {
+      margin: 0 0 1rem;
+      padding: 0.75rem;
+      border: 1px solid #aaa;
+      border-top: none;
+    }
+
+    #input-wrapper {
+      display: grid;
+      grid-template-rows: 1fr auto;
+      gap: 0.5rem;
+    }
+  </style>
+</head>
+
+<body>
+  <section>
+    <h1>Cartesian JSON</h1>
+    <p>Quickly generate cartesian products based on a JSON object, where each property is an array of possible JSON values for this property. Non-array values
+      are used as constants.</p>
+    <div id="input-wrapper">
+      <textarea id="input-json"></textarea>
+      <p id="input-hints"></p>
+    </div>
+  </section>
+  <section>
+    <h1>Tabular output</h1>
+    <p>Omits constants. You may use the checkbox to remember if you've reviewed the results.</p>
+    <div id="table-output"></div>
+  </section>
+  <section>
+    <h1>JSON output</h1>
+    <p>All results as JSON objects, including constants. Use the inputs to give meaningful names to ease
+      discussions.</p>
+    <div id="json-output"></div>
+  </section>
+  <script type="module" src="main.js"></script>
+</body>
+
+</html>
