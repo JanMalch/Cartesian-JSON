@@ -44,7 +44,8 @@ function compute(parsedInput) {
 
         table += '<tr><td><input type="checkbox"></td>';
         for (const [key] of variableEntries) {
-            table += `<td>${result[key]}</td>`;
+            const v = result[key];
+            table += `<td>${typeof v === 'object' ? JSON.stringify(v) : v}</td>`;
         }
         table += '</tr>';
 
